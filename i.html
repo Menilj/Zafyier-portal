@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafyier Services Portal - Government & Business Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: #0d9f6e;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--dark);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero .btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero .btn-outline {
+            background: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .service-content p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Booking Section */
+        .booking-form-section {
+            background: #f8fafc;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .modal-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 70px);
+                background: white;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-cancelled {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-text">Zafyier <span>Services</span></div>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="Admin.html">Admin</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content animate-fadeIn">
+            <h1>Streamlined Government & Business Services</h1>
+            <p>Access all government, business and IT services in one place. Fast, reliable, and convenient services for citizens and businesses across Kenya.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="btn">Book a Service Now</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p class="text-center mb-4">Choose from our wide range of government and business services</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card animate-fadeIn delay-1">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KRA Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>KRA PIN Registration</h3>
+                        <p>Register for your KRA PIN quickly and easily through our streamlined process.</p>
+                        <div class="price">From KSH 0</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card animate-fadeIn delay-2">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tax Compliance">
+                    </div>
+                    <div class="service-content">
+                        <h3>Tax Compliance Certificate</h3>
+                        <p>Obtain your Tax Compliance Certificate for business and personal use.</p>
+                        <div class="price">KSH 100</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card animate-fadeIn delay-3">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Good Conduct">
+                    </div>
+                    <div class="service-content">
+                        <h3>Certificate of Good Conduct</h3>
+                        <p>Apply for your police clearance certificate with our assistance.</p>
+                        <div class="price">KSH 1,300</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card animate-fadeIn delay-1">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Driving License">
+                    </div>
+                    <div class="service-content">
+                        <h3>NTSA Driving License</h3>
+                        <p>Apply for or renew your driving license through our simplified process.</p>
+                        <div class="price">KSH 850</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card animate-fadeIn delay-2">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Company Registration">
+                    </div>
+                    <div class="service-content">
+                        <h3>Company Registration</h3>
+                        <p>Register your business with the government quickly and efficiently.</p>
+                        <div class="price">From KSH 18,700</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card animate-fadeIn delay-3">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="HELB Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>HELB Services</h3>
+                        <p>Loan applications, clearance certificates, and account services.</p>
+                        <div class="price">From KSH 100</div>
+                        <a href="#booking" class="btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="booking" class="booking-form-section">
+        <div class="container">
+            <h2>Book a Service</h2>
+            <p class="text-center mb-4">Fill out the form below to request any of our services</p>
+            
+            <div class="form-container">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">-- Select a Service --</option>
+                            <option value="KRA PIN REGISTRATION">KRA PIN REGISTRATION</option>
+                            <option value="KRA NIL RETURNS">KRA NIL RETURNS</option>
+                            <option value="KRA P9 RETURNS">KRA P9 RETURNS</option>
+                            <option value="KRA RETURNS WITHHOLDING CERTIFICATE">KRA RETURNS WITHHOLDING CERTIFICATE</option>
+                            <option value="TAX COMPLIANCE CERTIFICATE (TCC) - KSH100">TAX COMPLIANCE CERTIFICATE (TCC) - KSH100</option>
+                            <option value="KRA PIN UPDATE - KSH150">KRA PIN UPDATE - KSH150</option>
+                            <option value="KRA PIN UPDATE+ (NEW EMAIL) - KSH200">KRA PIN UPDATE+ (NEW EMAIL) - KSH200</option>
+                            <option value="AGPO CERTIFICATE - KSH200">AGPO CERTIFICATE - KSH200</option>
+                            <option value="GOOD CONDUCT - KSH1,300">GOOD CONDUCT - KSH1,300</option>
+                            <option value="NTSA PDL - KSH850">NTSA PDL - KSH850</option>
+                            <option value="HELB CLEARANCE CERTIFICATE - KSH1,200">HELB CLEARANCE CERTIFICATE - KSH1,200</option>
+                            <option value="COMPANY REGISTRATION - KSH18,700">COMPANY REGISTRATION - KSH18,700</option>
+                            <option value="BUSINESS LINKING">BUSINESS LINKING</option>
+                            <option value="NTSA SMART DL">NTSA SMART DL</option>
+                            <option value="ECITIZEN ACCOUNT">ECITIZEN ACCOUNT</option>
+                            <option value="IFMIS SERVICES">IFMIS SERVICES</option>
+                            <option value="NTSA/TIMS ACCOUNT">NTSA/TIMS ACCOUNT</option>
+                            <option value="KRA PIN FOR COMPANY">KRA PIN FOR COMPANY</option>
+                            <option value="HELB ACCOUNT CREATION - KSH100">HELB ACCOUNT CREATION - KSH100</option>
+                            <option value="HELB LOAN APPLICATION (WITHOUT PRINTING) - KSH200">HELB LOAN APPLICATION (WITHOUT PRINTING) - KSH200</option>
+                            <option value="1 YEAR DRIVING LICENSE RENEWAL - KSH850">1 YEAR DRIVING LICENSE RENEWAL - KSH850</option>
+                            <option value="METROPOL CRB CERTIFICATE - KSH2,600">METROPOL CRB CERTIFICATE - KSH2,600</option>
+                            <option value="CRB STATUS- KSH300">CRB STATUS- KSH300</option>
+                            <option value="DOCUMENT PAGE-NETTING ( TABLE OF CONTENT AND NUMBERING)">DOCUMENT PAGE-NETTING ( TABLE OF CONTENT AND NUMBERING)</option>
+                            <option value="NSSF RETURNS">NSSF RETURNS</option>
+                            <option value="NSSF APPLICATION">NSSF APPLICATION</option>
+                            <option value="SHA APPLICATION">SHA APPLICATION</option>
+                            <option value="CONSULT FOR PROJECT / PROPOSAL WRITING">CONSULT FOR PROJECT / PROPOSAL WRITING</option>
+                            <option value="TSC NUMBER APPLICATION">TSC NUMBER APPLICATION</option>
+                            <option value="KMTC ACCOUNT + APPLICATION">KMTC ACCOUNT + APPLICATION</option>
+                            <option value="GHRIS PAYSLIPS">GHRIS PAYSLIPS</option>
+                            <option value="ECITIZEN ACCOUNT CREATION">ECITIZEN ACCOUNT CREATION</option>
+                            <option value="GHRIS REGISTRATION">GHRIS REGISTRATION</option>
+                            <option value="E-CITIZEN PASSWORD RECOVERY">E-CITIZEN PASSWORD RECOVERY</option>
+                            <option value="CORRECTION OF TIMS ACCOUNT ID SERIAL NUMBER">CORRECTION OF TIMS ACCOUNT ID SERIAL NUMBER</option>
+                            <option value="TSC WEALTH DECLARATION">TSC WEALTH DECLARATION</option>
+                            <option value="KRA EMAIL RESET">KRA EMAIL RESET</option>
+                            <option value="IFMIS ACCOUNT">IFMIS ACCOUNT</option>
+                            <option value="COMPANY PROFILE+ARTICLE OF ASSOCIATION">COMPANY PROFILE+ARTICLE OF ASSOCIATION</option>
+                            <option value="PATNERSHIP DEED">PARTNERSHIP DEED</option>
+                            <option value="COMPANY PROFILE">COMPANY PROFILE</option>
+                            <option value="ARTICLE OF ASSOCIATION">ARTICLE OF ASSOCIATION</option>
+                            <option value="BUSINESS NAME REGISTRATION">BUSINESS NAME REGISTRATION</option>
+                            <option value="FIRST TIME KUCCPS APPLICATION">FIRST TIME KUCCPS APPLICATION</option>
+                            <option value="DRIVING LICENSE RENEWAL">DRIVING LICENSE RENEWAL</option>
+                            <option value="PASSPORT APPLICATION">PASSPORT APPLICATION</option>
+                            <option value="SCHOOL PROJECTS">SCHOOL PROJECTS</option>
+                            <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+                            <option value="WRITING CV AND RESUME">WRITING CV AND RESUME</option>
+                            <option value="BLOGGING SERVICES">BLOGGING SERVICES</option>
+                            <option value="WEB DESIGN">WEB DESIGN</option>
+                            <option value="TRANSCRIPT EDITING">TRANSCRIPT EDITING</option>
+                            <option value="WEBSITE DEVELOPMENT">WEBSITE DEVELOPMENT</option>
+                            <option value="BUSINESS LICENSE">BUSINESS LICENSE</option>
+                            <option value="PSV BADGE">PSV BADGE</option>
+                            <option value="APPLICATION FOR PWD AND EXEMPTION CERTIFICATE">APPLICATION FOR PWD AND EXEMPTION CERTIFICATE</option>
+                            <option value="AFFIDAVITS">AFFIDAVITS</option>
+                            <option value="GP69 FORM">GP69 FORM</option>
+                            <option value="UPDATE TO WINDOWS 11">UPDATE TO WINDOWS 11</option>
+                            <option value="MICROSOFT 365 (Microsoft office) 2024">MICROSOFT 365 (Microsoft office) 2024</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" class="form-control" placeholder="Any special requirements or details about your request..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-block" id="submitBtn">
+                        <span id="submitText">Submit Booking</span>
+                        <span id="submitSpinner" class="spinner" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="services">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p class="text-center mb-4">Get in touch with our support team for any inquiries</p>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+254716869432">+254 716 869 432</a></p>
+                    <p>Available 8:00 AM - 5:00 PM, Mon-Fri</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:zafyierimran@gmail.com">zafyierimran@gmail.com</a></p>
+                    <p>Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Nairobi, Kenya</p>
+                    <p>Virtual services available nationwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Zafyier Services</h3>
+                    <p>Providing streamlined government and business services to individuals and organizations across Kenya.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61565354452635"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/Zafyier?s=08"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/kasalerio9?igsh=YzljYTk1ODg3Zg=="><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/254716869432"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#booking">Book a Service</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Popular Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#booking">KRA PIN Registration</a></li>
+                        <li><a href="#booking">Tax Compliance Certificate</a></li>
+                        <li><a href="#booking">Good Conduct Certificate</a></li>
+                        <li><a href="#booking">Driving License Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on new services and government requirements.</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email address" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Zafyier Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title">Booking Successful!</h3>
+            <p>Your service booking has been received successfully. We'll contact you shortly with further details.</p>
+            <p>Thank you for choosing Zafyier Services.</p>
+            <button class="btn" id="closeSuccessModal">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission with WhatsApp notification
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+            
+            submitText.textContent = 'Processing...';
+            submitSpinner.style.display = 'inline-block';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const bookingData = {
+                service: document.getElementById('service').value,
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                notes: document.getElementById('notes').value,
+                date: new Date().toISOString(),
+                status: 'Pending'
+            };
+        
+            try {
+                // Store booking in localStorage
+                let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+                bookings.push(bookingData);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+                
+                // In a real app, you would send this to your server
+                // await fetch('/api/bookings', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(bookingData)
+                // });
+                
+                // Send WhatsApp notification to admin
+                const whatsappMessage = `New Booking Received!\n\nService: ${bookingData.service}\nName: ${bookingData.fullName}\nPhone: ${bookingData.phone}\nEmail: ${bookingData.email || 'Not provided'}\nNotes: ${bookingData.notes || 'None'}`;
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                window.open(`https://wa.me/254716869432?text=${encodedMessage}`, '_blank');
+                
+                // Show success message
+                document.getElementById('successModal').style.display = 'flex';
+                
+                // Reset form
+                this.reset();
+                
+            } catch (error) {
+                console.error('Error processing booking:', error);
+                alert('There was an error processing your booking. Please try again.');
+            } finally {
+                // Reset button state
+                submitText.textContent = 'Submit Booking';
+                submitSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Close modal functionality
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+        
+        document.getElementById('closeSuccessModal').addEventListener('click', function() {
+            document.getElementById('successModal').style.display = 'none';
+        });
+
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter!');
+            this.reset();
+        });
+
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-fadeIn');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
