@@ -1181,7 +1181,26 @@
             alert('Thank you for subscribing to our newsletter!');
             this.reset();
         });
+// Add this to your booking completion script
+function showBookingDeclaration() {
+  const declaration = `
+    <div class="declaration-popup">
+      <h3>Important Declaration</h3>
+      <p>Your booking is subject to availability confirmation.</p>
+      <p>Cancellation policy: 24 hours notice required.</p>
+      <button onclick="closeDeclaration()">I Understand</button>
+    </div>
+  `;
+  
+  document.body.insertAdjacentHTML('beforeend', declaration);
+}
 
+function closeDeclaration() {
+  document.querySelector('.declaration-popup').remove();
+}
+
+// Call this after successful booking submission
+showBookingDeclaration();
         // Add animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
             const animateElements = document.querySelectorAll('.animate-fadeIn');
