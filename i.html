@@ -956,7 +956,12 @@
                         <label for="notes">Additional Notes</label>
                         <textarea id="notes" class="form-control" placeholder="Any special requirements or details about your request..."></textarea>
                     </div>
-                    
+                    <div>
+                       <label>
+                        <input type="checkbox" id="declaration" required />
+                         I declare that all the information provided is true and I accept the terms and conditions.
+                        </label>
+                    </div>
                     <button type="submit" class="btn btn-block" id="submitBtn">
                         <span id="submitText">Submit Booking</span>
                         <span id="submitSpinner" class="spinner" style="display: none;"></span>
@@ -1092,7 +1097,16 @@
                 }
             });
         });
+         //nice user alert when they forget to check the box:
+      document.getElementById("bookingForm").addEventListener("submit", function (e) {
+      const declaration = document.getElementById("declaration");
+      if (!declaration.checked) {
+      alert("Please accept the declaration to proceed with booking.");
+      e.preventDefault(); // stop the form from submitting
+    }
+  });
 
+    
         // Form submission with WhatsApp notification
         document.getElementById('bookingForm').addEventListener('submit', async function(e) {
             e.preventDefault();
