@@ -956,12 +956,106 @@
                         <label for="notes">Additional Notes</label>
                         <textarea id="notes" class="form-control" placeholder="Any special requirements or details about your request..."></textarea>
                     </div>
-                    <div class="form-group">
-                       <label>
-                        <input type="checkbox" id="declaration" required />
-                         I declare that all the information provided is true and I accept the terms and conditions.
-                        </label>
-                    </div>
+                    <!-- HTML Structure -->
+< div class="form-group">
+  <div class="legal-container">
+    <!-- Privacy Policy Section -->
+    <div class="policy-section">
+      <input type="checkbox" id="privacy-agree" required>
+      <label for="privacy-agree">
+        I acknowledge the <a href="/privacy-policy" target="_blank">Privacy Policy</a> 
+        and consent to data processing
+      </label>
+    </div>
+    
+    <!-- Booking Declaration Section -->
+    <div class="declaration-section">
+      <input type="checkbox" id="terms-agree" required>
+      <label for="terms-agree">
+        I accept the <a href="/terms" target="_blank">Terms & Conditions</a> 
+        and cancellation policy
+      </label>
+    </div>
+  </div>
+
+  <!-- Additional Notes -->
+  
+<!-- JavaScript Validation -->
+<script>
+document.getElementById('booking-form').addEventListener('submit', function(e) {
+  if (!document.getElementById('privacy-agree').checked || 
+      !document.getElementById('terms-agree').checked) {
+    e.preventDefault();
+    alert('Please accept both the Privacy Policy and Terms & Conditions');
+    document.querySelector('.legal-container').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+});
+</script>
+
+<!-- CSS Styling -->
+<style>
+.legal-container {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border-left: 4px solid #4a6bdf;
+}
+
+.policy-section, .declaration-section {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.policy-section:last-child, .declaration-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+label {
+  cursor: pointer;
+  user-select: none;
+}
+
+a {
+  color: #4a6bdf;
+  text-decoration: underline;
+}
+
+.note-disclaimer {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+button[type="submit"] {
+  background: #4a6bdf;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+button[type="submit"]:hover {
+  background: #3a5bcf;
+}
+</style>
+</div>
+                    
+<label for="additional-notes">Additional Notes (optional):</label>
+<textarea id="additional-notes" name="additional_notes"></textarea>
+    
                     <button type="submit" class="btn btn-block" id="submitBtn">
                         <span id="submitText">Submit Booking</span>
                         <span id="submitSpinner" class="spinner" style="display: none;"></span>
